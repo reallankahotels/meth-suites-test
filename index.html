@@ -264,6 +264,7 @@ footer .social a:hover{border-color:#EFE6D6}
 
 /* Guest review slider */
 .reviews-sec{padding-top:0;overflow:hidden}
+.tx-wrap{min-height:180px}
 .marquee{position:relative;margin-top:8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .track{display:flex;gap:20px;width:max-content;animation:slide var(--dur,40s) linear infinite}
 .marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
@@ -498,7 +499,11 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
       <h2 data-t="rev.h2">In our guests' words</h2>
       <p class="lead" data-t="rev.lead">Real words from people who stayed with us.</p>
     </div>
-    <div class="marquee" tabindex="0" aria-label="Guest reviews"><div class="track" id="revTrack"></div></div>
+    <div class="marquee" tabindex="0" aria-label="Guest reviews" hidden><div class="track" id="revTrack"></div></div>
+    <div class="wrap tx-wrap">
+      <!-- Live Google reviews (Trustindex) -->
+      <script defer async src='https://cdn.trustindex.io/loader.js?0812a6f8309b8609ae56a938302'></script>
+    </div>
   </section>
 
   <section id="rooms" class="rooms-bg">
@@ -688,7 +693,7 @@ const REVIEWS = [
    don't leave to book on another site and you lose the direct booking). */
 const RATINGS = [
   { site:"Booking.com", score:"7.7", outOf:"10", reviews:28, link:"" },
-  { site:"Google",      score:"4.4", outOf:"5",  reviews:67, link:"" },
+  { site:"Google",      score:"4.3", outOf:"5",  reviews:83, link:"" },
   { site:"Tripadvisor", score:"4.5", outOf:"5",  reviews:2,  link:"" },
   { site:"Agoda",       score:"",    outOf:"10", reviews:0,  link:"" }
 ];
@@ -1337,7 +1342,8 @@ $("emailLink").addEventListener("click", () => logContact("Email link"));
 /* Moving review slider */
 function renderReviews(){
   const sec = $("reviews");
-  if (!REVIEWS.length) { sec.hidden = true; return; }
+  if (!REVIEWS.length) return;   /* live Google reviews come from the Trustindex widget */
+  sec.querySelector(".marquee").hidden = false;
   const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const card = r => `<article class="rev">
       <div class="stars" aria-label="${r.stars} out of 5">${"★".repeat(r.stars)}${"☆".repeat(5 - r.stars)}</div>
