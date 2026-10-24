@@ -1409,4 +1409,166 @@ function updateSummary(){
 ["checkin","checkout","room","guests"].forEach(id => $(id).addEventListener("change", updateSummary));
 
 function buildBooking(channel){
-  const L = T[L
+  const L = T[LANG], M = L.m || T.en.m, ML = L.m ? LANG : "en", NF = L.m ? L.nights : T.en.nights;
+  $("err").textContent = ""; $("ok").textContent = "";
+  const r = ROOMS.find(x => x.id === $("room").value), n = nights();
+  if (!(n >= 1)) { $("err").textContent = L.errDates; return null; }
+  if (!$("name").value.trim()) { $("err").textContent = L.errName; $("name").focus(); return null; }
+  if (!$("phone").value.trim() && !$("email").value.trim()) { $("err").textContent = L.errContact; $("phone").focus(); return null; }
+  const b = {
+    ref: HOTEL.source + "-" + Date.now().toString(36).slice(-5).toUpperCase(),
+    name: $("name").value.trim(), checkin: $("checkin").value, checkout: $("checkout").value,
+    nights: n, room: r.name.en, guests: $("guests").value, total: r.price * n,
+    phone: $("phone").value.trim() || "-", email: $("email").value.trim() || "-",
+    notes: $("notes").value.trim() || "-", channel: channel, lang: LANG,
+    flight: $("flight").value.trim().toUpperCase() || "-", pickup: $("pickup").checked ? "Yes" : "No"
+  };
+  b.text = [
+    M.title, "",
+    `${M.name}: ${b.name}`, `${M.in}: ${b.checkin}`, `${M.out}: ${b.checkout} (${NF(n)})`,
+    `${M.room}: ${r.name[ML]}`, `${M.guests}: ${b.guests}`, `${M.total}: US$${b.total}`,
+    `${M.flight}: ${b.flight}`, `${M.pickup}: ${b.pickup}`,
+    `${M.phone}: ${b.phone}`, `${M.email}: ${b.email}`, `${M.notes}: ${b.notes}`, "",
+    `${M.ref}: ${b.ref}`
+  ].join("\n");
+  return b;
+}
+function logToSheet(b){
+  if (!HOTEL.sheetUrl) return;
+  try {
+    const data = Object.assign({}, b); delete data.text;
+    const body = JSON.stringify(data);
+    if (!(navigator.sendBeacon && navigator.sendBeacon(HOTEL.sheetUrl, new Blob([body], {type:"text/plain"})))) {
+      fetch(HOTEL.sheetUrl, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain"}, body, keepalive:true});
+    }
+  } catch(e) { console.error("Sheet log failed", e); }
+}
+$("sendWa").addEventListener("click", () => {
+  const b = buildBooking("WhatsApp"); if (!b) return;
+  logToSheet(b);
+  window.open(waBase + "?text=" + encodeURIComponent(b.text), "_blank", "noopener");
+  $("ok").textContent = T[LANG].sent(HOTEL.phoneDisplay);
+});
+$("sendMail").addEventListener("click", () => {
+  const b = buildBooking("Email"); if (!b) return;
+  logToSheet(b);
+  $("ok").textContent = T[LANG].sent(HOTEL.phoneDisplay);
+  setTimeout(() => {
+    location.href = "mailto:" + HOTEL.email + "?subject=" + encodeURIComponent((T[LANG].m || T.en.m).title + " – " + b.name + " (" + b.ref + ")") + "&body=" + encodeURIComponent(b.text);
+  }, 300);
+});
+
+renderSocial();
+
+/* Tracked quick contacts: every WhatsApp button, phone tap and email tap
+   is logged to the Google Sheet. WhatsApp chats also carry a ref code. */
+function newRef(){ return HOTEL.source + "-" + Date.now().toString(36).slice(-5).toUpperCase(); }
+function logContact(channel, ref){
+  logToSheet({ ref: ref || "-", name:"-", checkin:"-", checkout:"-", nights:"-", room:"-", guests:"-",
+               total:"-", phone:"-", email:"-", notes:"Quick contact (no form)", channel: channel, lang: LANG });
+}
+function openTrackedChat(e){
+  e.preventDefault();
+  if (LANG === "zh" && HOTEL.wechat) { quickChat("wc"); return; }
+  const ref = newRef();
+  logContact("WhatsApp chat", ref);
+  const msg = T[LANG].floatMsg + "\n\nRef: " + ref;
+  window.open(waBase + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+}
+["waFloat","mbarWa"].forEach(id => $(id).addEventListener("click", openTrackedChat));
+
+/* Telegram & WeChat: copy the message (with ref) and guide the guest */
+function copyText(t){
+  const ta = $("cdMsg"); ta.value = t;
+  const fallback = () => { try { ta.select(); document.execCommand("copy"); } catch(e) {} };
+  if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).catch(fallback); } else { fallback(); }
+}
+function openChat(kind, text, ref){
+  const g = k => T[LANG][k] ?? T.en[k];
+  $("cdTitle").textContent = g("dlg." + kind + ".h");
+  $("cdText").textContent = g("dlg." + kind + ".p");
+  $("cdId").textContent = kind === "wc" ? HOTEL.wechat : "";
+  $("cdId").hidden = kind !== "wc";
+  $("cdOpen").hidden = kind !== "tg";
+  $("cdOpen").href = "https://t.me/" + HOTEL.telegram.replace(/[\s]/g, "").replace(/^@/, "");
+  $("cdRef").textContent = ref;
+  if (!$("chatDlg").open) $("chatDlg").showModal();
+  copyText(text);
+}
+function quickChat(kind){
+  const ref = newRef();
+  logContact(kind === "tg" ? "Telegram chat" : "WeChat chat", ref);
+  openChat(kind, (T[LANG].floatMsg || T.en.floatMsg) + "\n\nRef: " + ref, ref);
+}
+$("tgLink").addEventListener("click", () => quickChat("tg"));
+$("wcLink").addEventListener("click", () => quickChat("wc"));
+$("sendTg").addEventListener("click", () => { const b = buildBooking("Telegram"); if (!b) return; logToSheet(b); openChat("tg", b.text, b.ref); });
+$("sendWc").addEventListener("click", () => { const b = buildBooking("WeChat"); if (!b) return; logToSheet(b); openChat("wc", b.text, b.ref); });
+$("cdCopy").addEventListener("click", () => copyText($("cdMsg").value));
+$("cdClose").addEventListener("click", () => $("chatDlg").close());
+if (!HOTEL.telegram) { $("sendTg").hidden = true; $("tgLink").hidden = true; }
+if (!HOTEL.wechat) { $("sendWc").hidden = true; $("wcLink").hidden = true; }
+$("lateWa").addEventListener("click", e => {
+  e.preventDefault();
+  const ref = newRef();
+  logContact("WhatsApp late-arrival question", ref);
+  const msg = "Hi Meth Suites, I'm arriving late at Colombo Airport and would like to ask about late check-in. (via website)\n\nRef: " + ref;
+  window.open(waBase + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+});
+$("phoneLink").addEventListener("click", () => logContact("Phone call"));
+$("emailLink").addEventListener("click", () => logContact("Email link"));
+
+/* Moving review slider */
+function renderReviews(){
+  const sec = $("reviews");
+  if (!REVIEWS.length) return;   /* live Google reviews come from the Trustindex widget */
+  sec.querySelector(".marquee").hidden = false;
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const card = r => `<article class="rev">
+      <div class="stars" aria-label="${r.stars} out of 5">${"★".repeat(r.stars)}${"☆".repeat(5 - r.stars)}</div>
+      <q>${esc(r.text)}</q>
+      <footer><span><b>${esc(r.name)}</b>${r.country ? " · " + esc(r.country) : ""}</span><span class="src">${esc(r.source)}</span></footer>
+    </article>`;
+  const once = REVIEWS.map(card).join("");
+  const track = $("revTrack");
+  track.innerHTML = once + once.replace(/<article class="rev">/g, '<article class="rev" aria-hidden="true">');
+  track.style.setProperty("--dur", (REVIEWS.length * 9) + "s");
+}
+renderReviews();
+
+/* Gallery lightbox: tap a photo to see it large */
+let lbIndex = 0;
+function lbPhotos(){ return [...document.querySelectorAll(".gallery .ph")].filter(f => f.querySelector("img")); }
+function lbShow(i){
+  const list = lbPhotos(); if (!list.length) return;
+  lbIndex = (i + list.length) % list.length;
+  const f = list[lbIndex], img = f.querySelector("img");
+  $("lbImg").src = img.src; $("lbImg").alt = img.alt;
+  $("lbCap").textContent = f.querySelector("figcaption")?.textContent || "";
+}
+document.querySelector(".gallery").addEventListener("click", e => {
+  const f = e.target.closest(".ph"); if (!f || !f.querySelector("img")) return;
+  lbShow(lbPhotos().indexOf(f)); $("lb").showModal();
+});
+$("lbClose").addEventListener("click", () => $("lb").close());
+$("lbPrev").addEventListener("click", () => lbShow(lbIndex - 1));
+$("lbNext").addEventListener("click", () => lbShow(lbIndex + 1));
+$("lb").addEventListener("click", e => { if (e.target === $("lb")) $("lb").close(); });
+document.addEventListener("keydown", e => {
+  if (!$("lb").open) return;
+  if (e.key === "ArrowRight") lbShow(lbIndex + 1);
+  if (e.key === "ArrowLeft") lbShow(lbIndex - 1);
+});
+
+/* Start: remembered language, else English */
+let saved = null;
+try { saved = localStorage.getItem("meth-lang"); } catch(e) {}
+if (!saved) {   /* first visit: use the phone/browser language if we have it */
+  const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
+  saved = "en";
+  for (const l of prefs) { const c = String(l).toLowerCase().slice(0,2); if (T[c]) { saved = c; break; } }
+}
+setLang(saved);
+</script>
+</body>
+</html>
