@@ -308,6 +308,7 @@ html:lang(si) .hero h1,html:lang(ta) .hero h1,html:lang(hi) .hero h1,html:lang(z
 .perk-note{margin:12px 0 0;font-size:.82rem;color:rgba(255,255,255,.7)}
 .room-perk{margin:10px 0 0;width:100%;font-size:.85rem;font-weight:600;color:var(--lagoon-2)}
 
+.priv-note a{color:var(--lagoon-2);font-weight:600}
 /* Sections */
 section{padding:84px 20px}
 .wrap{max-width:1180px;margin:auto}
@@ -439,6 +440,17 @@ dd{margin:2px 0 0;color:var(--muted)}
 
 footer{background:var(--husk);color:#EFE6D6;padding:40px 20px;font-size:.92rem}
 footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .foot-grid{display:grid;grid-template-columns:1.2fr 1.3fr 1fr;gap:32px;align-items:start}
+.foot-col p{margin:6px 0 14px;opacity:.85}
+.foot-h{font-family:var(--sans);font-size:.95rem;font-weight:700;letter-spacing:.02em;margin:4px 0 12px;color:var(--mango)}
+.foot-list{list-style:none;margin:0;padding:0}
+.foot-list li{display:flex;gap:10px;align-items:flex-start;padding:4px 0}
+.foot-list svg{flex:none;width:18px;height:18px;margin-top:3px;fill:none;stroke:var(--mango);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+footer a{color:#EFE6D6;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .foot-bottom{border-top:1px solid rgba(239,230,214,.2);margin-top:26px;padding-top:16px;font-size:.85rem;opacity:.8;display:block}
+@media (max-width:820px){footer .foot-grid{grid-template-columns:1fr 1fr}footer .foot-grid .foot-col:first-child{grid-column:1/-1}}
+@media (max-width:520px){footer .foot-grid{grid-template-columns:1fr;gap:22px}}
 footer .brand{font-size:1.3rem}
 
 /* Gallery lightbox */
@@ -674,6 +686,7 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
           <button type="button" class="btn-alt btn-tg" id="sendTg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.2c.3-1.3-.5-1.9-1.6-1.5zM8.7 13.5l9.9-6.3c.5-.3.9-.1.5.2l-8.4 7.6-.3 3.5-1.7-5z"/></svg><span>Telegram</span></button>
           <button type="button" class="btn-alt btn-wc" id="sendWc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3C4.6 3 1 6 1 9.6c0 2.1 1.2 3.9 3 5.1L3.3 17l2.6-1.4c.9.3 1.9.4 3 .4h.6a5.8 5.8 0 0 1-.3-1.8C9.2 10.9 12.6 8 16.8 8h.6C16.6 5.1 13.1 3 9 3zM6.3 8.6a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm5.4 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM23 14.2c0-3-3-5.4-6.4-5.4s-6.4 2.4-6.4 5.4 3 5.4 6.4 5.4c.8 0 1.6-.1 2.3-.4l2.1 1.2-.6-1.9c1.6-1 2.6-2.6 2.6-4.3zm-8.5-.8a.9.9 0 1 1 0-1.7.9.9 0 0 1 0 1.7zm4.3 0a.9.9 0 1 1 0-1.7.9.9 0 0 1 0 1.7z"/></svg><span data-t="wc.btn">WeChat</span></button>
         </div>
+        <p class="note priv-note"><span data-t="book.privPre">Read how we handle your details in our</span> <a href="privacy.html" data-t="book.privLink">Privacy policy</a><span data-t="book.privPost">.</span></p>
         <p class="note" data-t="book.note">This sends a booking request, not an instant booking. Your room is confirmed only when the hotel replies. Prices are estimates in US dollars. We use your details only to answer your request.</p>
       </form>
     </div>
@@ -708,13 +721,33 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
 </main>
 
 <footer>
-  <div class="wrap">
-    <div><span class="brand">Meth Suites</span><br><span data-t="foot.tag">Family-run boutique hotel, Pamunugama, Sri Lanka</span></div>
-    <div>
-      <ul class="social social-wrap" id="socialFoot" style="margin:0 0 12px"></ul>
-      <a href="blog.html" data-t="foot.blog" style="color:inherit">Travel tips (blog)</a><br>© <span id="yr"></span> Meth Suites. <span data-t="foot.by">Website by RealLanka.</span>
+  <div class="wrap foot-grid">
+    <div class="foot-col">
+      <span class="brand">Meth Suites</span>
+      <p data-t="foot.tag">Family-run boutique hotel, Pamunugama, Sri Lanka</p>
+      <ul class="social social-wrap" id="socialFoot"></ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h" data-t="foot.contact">Contact</h2>
+      <ul class="foot-list">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg><span data-t="loc.addrVal">507/B/1 Bimpandura, Pamunugama 11370, Sri Lanka</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><a href="tel:+94761318938">+94 76 131 8938</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.5-4.3A8.5 8.5 0 1 1 20.5 11.6z"/><path d="M9 8.5c.3 2.6 2.3 4.9 5 5.5l1-1.2 2 .9c-.2 1.3-1.3 2-2.5 1.8A7 7 0 0 1 8.3 9.7c-.1-1.2.6-2.2 1.8-2.4l.9 2-1.2.9"/></svg><a href="https://wa.me/94761318938" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg><a href="mailto:methsuites@gmail.com">methsuites@gmail.com</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h" data-t="foot.links">Quick links</h2>
+      <ul class="foot-list foot-links">
+        <li><a href="#rooms" data-t="nav.rooms">Rooms</a></li>
+        <li><a href="#facilities" data-t="nav.fac">Facilities</a></li>
+        <li><a href="#book" data-t="nav.book">Book direct</a></li>
+        <li><a href="blog.html" data-t="foot.blog">Travel tips (blog)</a></li>
+        <li><a href="privacy.html" data-t="foot.priv">Privacy policy</a></li>
+      </ul>
     </div>
   </div>
+  <div class="wrap foot-bottom">© <span id="yr"></span> Meth Suites · <span data-t="foot.by">Website by RealLanka.</span></div>
 </footer>
 
 <div class="mbar" aria-label="Quick booking">
@@ -803,6 +836,7 @@ const ROOMS = [
 /* Page text in Sinhala and Tamil (English comes from the page itself) */
 const T = {
 si:{
+  "foot.contact":"සම්බන්ධ වන්න","foot.links":"ඉක්මන් සබැඳි","foot.priv":"රහස්‍යතා ප්‍රතිපත්තිය","book.privPre":"ඔබගේ තොරතුරු අප හසුරුවන ආකාරය අපගේ","book.privLink":"රහස්‍යතා ප්‍රතිපත්තියෙන්","book.privPost":" කියවන්න.",
   "book.eye":"පහසු වෙන්කිරීම","book.trust":"ඔබගේ ඉල්ලීම කෙලින්ම හෝටල් කණ්ඩායමට ලැබේ — පුද්ගලිකව පිළිතුරු ලැබේ.","book.k1h":"සාධාරණ ගාස්තු","book.k1":"Meth Suites සමඟ සෘජුවම වෙන්කරවා ගන්න","book.k2h":"පහසු ගෙවීම් ක්‍රම","book.k2":"කාඩ්පත, මුදල් හෝ ආරක්ෂිත ගෙවීම් සබැඳිය","book.k3h":"නොමිලේ අවලංගු කිරීම","book.k3":"පැමිණීමට පැය 24කට පෙර දක්වා*","book.k4h":"ගුවන්තොටුපළට ගෙන යාම","book.k4":"ඉල්ලීම මත ලබාගත හැක","book.k3n":"*ඉන් පසු අවලංගු කිරීම් සහ නොපැමිණීම් සඳහා සම්පූර්ණ ගාස්තුව අය කෙරේ.","roomPerk":"✓ නොමිලේ අවලංගු කිරීම · හෝටලයේදී ගෙවන්න",
   "pay.link":"ආරක්ෂිත ගෙවීම් සබැඳිය",
   "fac.h2":"පහසුකම් සහ සේවා","fac.lead":"සුවපහසු, සැහැල්ලු නවාතැනක් සඳහා සැලකිලිමත්ව සැපයූ පහසුකම්.","fac.1h":"ගෘහස්ථ පිහිනුම් තටාකය","fac.1p":"කාලගුණය කෙසේ වුවත් ප්‍රබෝධමත් ස්නානයක් භුක්ති විඳින්න.","fac.2h":"සුන්දර Rooftop BBQ අත්දැකීම","fac.2p":"සවස හිරු බැස යන සුන්දර මොහොතක, Rooftop Deck එකේදී රසවත් BBQ සමඟ පවුලේ අය සහ මිතුරන් එක්ක අමතක නොවන කාලයක් ගත කරන්න.","fac.3h":"අවන්හල සහ බාර්","fac.3p":"එක් අයෙකුට US$5 සිට උදෑසන ආහාරය – බටහිර, ඉන්දියානු සහ ශ්‍රී ලාංකික විකල්ප. ඉල්ලීම මත දිවා සහ රාත්‍රී ආහාරය.","fac.4h":"නොමිලේ පෞද්ගලික වාහන නැවැත්වීම","fac.4p":"හෝටල් භූමියේම ආරක්ෂිත වාහන නැවැත්වීම.","fac.5h":"නොමිලේ බයිසිකල්","fac.5p":"අසල වෙරළ සහ කලපුව ඔබේම වේගයෙන් ගවේෂණය කරන්න.","fac.6h":"ව්‍යායාම කාමරය","fac.6p":"අපගේ කුඩා ජිම් එකේ ඔබේ ව්‍යායාම පුරුද්ද පවත්වාගන්න.","fac.7h":"ගුවන්තොටුපළට ගෙන යාම","fac.7p":"ගුවන්තොටුපළට යාමට US$8–10 පමණ මුදලකට වාහනයක් සූදානම් කළ හැක.","fac.8h":"සුරතල් සතුන්ට හිතකාමී","fac.8p":"කලින් දැනුම් දීමෙන් සුරතල් සතුන් සාදරයෙන් පිළිගනිමු.","fac.9h":"බිලියඩ් සහ පූල් මේසය – නොමිලේ","fac.9p":"පවුලේ අය සහ මිතුරන් සමඟ බිලියඩ් හෝ පූල් ක්‍රීඩා කරන්න.",
@@ -893,6 +927,7 @@ si:{
   floatMsg:"Hi Meth Suites, I'd like to ask about a room. (via website)"
 },
 ta:{
+  "foot.contact":"தொடர்புக்கு","foot.links":"விரைவு இணைப்புகள்","foot.priv":"தனியுரிமைக் கொள்கை","book.privPre":"உங்கள் விவரங்களை நாங்கள் எவ்வாறு கையாள்கிறோம் என்பதை எங்கள்","book.privLink":"தனியுரிமைக் கொள்கையில்","book.privPost":" படியுங்கள்.",
   "book.eye":"எளிதான முன்பதிவு","book.trust":"உங்கள் கோரிக்கை நேரடியாக ஹோட்டல் குழுவிடம் செல்லும் — தனிப்பட்ட முறையில் பதில் அளிக்கப்படும்.","book.k1h":"நியாயமான விலை","book.k1":"Meth Suites உடன் நேரடியாக முன்பதிவு செய்யுங்கள்","book.k2h":"வசதியான கட்டண முறைகள்","book.k2":"கார்டு, ரொக்கம் அல்லது பாதுகாப்பான கட்டண இணைப்பு","book.k3h":"இலவச ரத்து","book.k3":"வருகைக்கு 24 மணி நேரம் முன்பு வரை*","book.k4h":"விமான நிலையத்திற்கு வாகன வசதி","book.k4":"கோரிக்கையின் பேரில் கிடைக்கும்","book.k3n":"*அதற்குப் பிறகு ரத்து செய்தால் அல்லது வராவிட்டால் முழுத் தொகை வசூலிக்கப்படும்.","roomPerk":"✓ இலவச ரத்து · ஹோட்டலில் செலுத்துங்கள்",
   "pay.link":"பாதுகாப்பான கட்டண இணைப்பு",
   "fac.h2":"வசதிகள் & சேவைகள்","fac.lead":"வசதியான, நிம்மதியான தங்குதலுக்கான சிந்தனையுடன் அமைந்த வசதிகள்.","fac.1h":"உள்ளரங்க நீச்சல் குளம்","fac.1p":"வானிலை எதுவாக இருந்தாலும் புத்துணர்ச்சியூட்டும் குளியல்.","fac.2h":"கூரை மேல்தளம்","fac.2p":"கடலோரக் காட்சிகளுடனும் இதமான கடல் காற்றுடனும் ஓய்வெடுங்கள். கோரிக்கையின் பேரில் மாலை பார்பிக்யூ.","fac.3h":"உணவகம் & பார்","fac.3p":"ஒருவருக்கு US$5 முதல் காலை உணவு – மேற்கத்திய, இந்திய மற்றும் இலங்கை உணவுகள். கோரிக்கையின் பேரில் மதிய மற்றும் இரவு உணவு.","fac.4h":"இலவச தனியார் வாகன நிறுத்தம்","fac.4p":"ஹோட்டல் வளாகத்திலேயே பாதுகாப்பான வாகன நிறுத்தம்.","fac.5h":"இலவச சைக்கிள்கள்","fac.5p":"அருகிலுள்ள கடற்கரையையும் களப்பையும் உங்கள் வேகத்தில் சுற்றிப் பாருங்கள்.","fac.6h":"உடற்பயிற்சி அறை","fac.6p":"எங்கள் சிறிய ஜிம்மில் உங்கள் உடற்பயிற்சியைத் தொடருங்கள்.","fac.7h":"விமான நிலையத்திற்கு வாகன வசதி","fac.7p":"சுமார் US$8–10க்கு விமான நிலையம் செல்ல வாகனம் ஏற்பாடு செய்யலாம்.","fac.8h":"செல்லப்பிராணிகளுக்கு ஏற்ற தங்குமிடம்","fac.8p":"முன் ஏற்பாட்டுடன் செல்லப்பிராணிகள் வரவேற்கப்படுகின்றன.","fac.9h":"பில்லியர்ட்ஸ் & பூல் மேசை – இலவசம்","fac.9p":"குடும்பத்தினருடனும் நண்பர்களுடனும் பில்லியர்ட்ஸ் அல்லது பூல் விளையாடுங்கள்.",
@@ -975,6 +1010,7 @@ ta:{
   floatMsg:"Hi Meth Suites, I'd like to ask about a room. (via website)"
 },
 hi:{
+  "foot.contact":"संपर्क","foot.links":"उपयोगी लिंक","foot.priv":"गोपनीयता नीति","book.privPre":"हम आपकी जानकारी कैसे संभालते हैं, यह हमारी","book.privLink":"गोपनीयता नीति","book.privPost":" में पढ़ें।",
   "book.eye":"आसान बुकिंग","book.trust":"आपका अनुरोध सीधे होटल टीम तक पहुँचता है — असली लोग, निजी जवाब।","book.k1h":"किफ़ायती रेट","book.k1":"Meth Suites से सीधे बुक करें","book.k2h":"भुगतान के आसान विकल्प","book.k2":"कार्ड, नकद या सुरक्षित पेमेंट लिंक","book.k3h":"मुफ़्त रद्दीकरण","book.k3":"आगमन से 24 घंटे पहले तक*","book.k4h":"एयरपोर्ट ड्रॉप-ऑफ़","book.k4":"अनुरोध पर उपलब्ध","book.k3n":"*इसके बाद रद्द करने या न आने पर पूरी राशि ली जाएगी।","roomPerk":"✓ मुफ़्त रद्दीकरण · होटल में भुगतान",
   "pay.link":"सुरक्षित पेमेंट लिंक",
   "fac.h2":"सुविधाएँ और सेवाएँ","fac.lead":"आरामदायक और सुकून भरे ठहराव के लिए सोच-समझकर दी गई सुविधाएँ।","fac.1h":"इनडोर स्विमिंग पूल","fac.1p":"मौसम कैसा भी हो, ताज़गी भरी डुबकी लगाएँ।","fac.2h":"रूफ़टॉप डेक","fac.2p":"तटीय नज़ारों और हल्की समुद्री हवा के साथ आराम करें। अनुरोध पर शाम को बारबेक्यू।","fac.3h":"रेस्टोरेंट और बार","fac.3p":"प्रति व्यक्ति US$5 से नाश्ता – वेस्टर्न, भारतीय और श्रीलंकाई विकल्प। अनुरोध पर दोपहर और रात का खाना।","fac.4h":"मुफ़्त निजी पार्किंग","fac.4p":"होटल परिसर में ही सुरक्षित पार्किंग।","fac.5h":"मुफ़्त साइकिलें","fac.5p":"पास के समुद्र तट और लैगून को अपनी रफ़्तार से घूमें।","fac.6h":"फ़िटनेस रूम","fac.6p":"हमारे छोटे ऑन-साइट जिम में अपनी दिनचर्या जारी रखें।","fac.7h":"एयरपोर्ट ड्रॉप-ऑफ़","fac.7p":"लगभग US$8–10 में एयरपोर्ट जाने के लिए गाड़ी की व्यवस्था की जा सकती है।","fac.8h":"पालतू जानवरों के अनुकूल","fac.8p":"पहले से बताने पर पालतू जानवरों का स्वागत है।","fac.9h":"बिलियर्ड्स और पूल टेबल – मुफ़्त","fac.9p":"परिवार और दोस्तों के साथ बिलियर्ड्स या पूल का खेल खेलें।",
@@ -1058,6 +1094,7 @@ hi:{
 },
 
 ru:{
+  "foot.contact":"Контакты","foot.links":"Быстрые ссылки","foot.priv":"Политика конфиденциальности","book.privPre":"Как мы обрабатываем ваши данные, читайте в нашей","book.privLink":"политике конфиденциальности","book.privPost":".",
   "book.eye":"Простое бронирование","book.trust":"Ваш запрос попадает прямо к команде отеля — отвечают живые люди.","book.k1h":"Выгодные цены","book.k1":"бронируйте напрямую в Meth Suites","book.k2h":"Удобная оплата","book.k2":"картой, наличными или по защищённой платёжной ссылке","book.k3h":"Бесплатная отмена","book.k3":"до 24 часов до заезда*","book.k4h":"Трансфер в аэропорт","book.k4":"по запросу","book.k3n":"*При более поздней отмене или неявке взимается полная стоимость.","roomPerk":"✓ Бесплатная отмена · Оплата в отеле",
   "pay.link":"Платёжная ссылка",
   "fac.h2":"Удобства и услуги","fac.lead":"Продуманные удобства для комфортного и спокойного отдыха.","fac.1h":"Крытый бассейн","fac.1p":"Освежающее купание в любую погоду.","fac.2h":"Терраса на крыше","fac.2p":"Отдыхайте с видом на побережье под лёгкий морской бриз. Вечерние барбекю по запросу.","fac.3h":"Ресторан и бар","fac.3p":"Завтрак от US$5 с человека: западная, индийская и шри-ланкийская кухня. Обед и ужин по запросу.","fac.4h":"Бесплатная частная парковка","fac.4p":"Охраняемая парковка прямо на территории отеля.","fac.5h":"Бесплатные велосипеды","fac.5p":"Исследуйте пляж и лагуну неподалёку в своём темпе.","fac.6h":"Фитнес-зал","fac.6p":"Поддерживайте форму в нашем небольшом спортзале.","fac.7h":"Трансфер в аэропорт","fac.7p":"Поездку в аэропорт можно организовать примерно за US$8–10.","fac.8h":"Можно с питомцами","fac.8p":"Питомцы допускаются по предварительной договорённости.","fac.9h":"Бильярд и пул – бесплатно","fac.9p":"Сыграйте в бильярд или пул с семьёй и друзьями.",
@@ -1141,6 +1178,7 @@ ru:{
 },
 
 zh:{
+  "foot.contact":"联系我们","foot.links":"快速链接","foot.priv":"隐私政策","book.privPre":"了解我们如何处理您的信息，请阅读我们的","book.privLink":"隐私政策","book.privPost":"。",
   "book.eye":"轻松预订","book.trust":"您的请求直接发送给酒店团队——真人亲自回复。","book.k1h":"价格合理","book.k1":"直接向 Meth Suites 预订","book.k2h":"灵活支付方式","book.k2":"刷卡、现金或安全付款链接","book.k3h":"免费取消","book.k3":"最晚于入住前24小时*","book.k4h":"送机服务","book.k4":"可按需安排","book.k3n":"*逾期取消或未入住将收取全额费用。","roomPerk":"✓ 免费取消 · 到店付款",
   "pay.link":"安全付款链接",
   "fac.h2":"设施与服务","fac.lead":"贴心设施，让您住得舒适、放松。","fac.1h":"室内泳池","fac.1p":"无论天气如何，都能畅游一番。","fac.2h":"屋顶露台","fac.2p":"在海岸美景与轻柔海风中放松身心。可应要求安排傍晚烧烤。","fac.3h":"餐厅与酒吧","fac.3p":"早餐每人US$5起，提供西式、印度和斯里兰卡风味。午餐和晚餐可按需提供。","fac.4h":"免费私人停车场","fac.4p":"酒店内安全停车。","fac.5h":"免费自行车","fac.5p":"按自己的节奏探索附近的海滩和泻湖。","fac.6h":"健身房","fac.6p":"在酒店小型健身房保持您的锻炼习惯。","fac.7h":"送机服务","fac.7p":"可安排前往机场的车辆，约US$8–10。","fac.8h":"可携带宠物","fac.8p":"提前安排即可携带宠物入住。","fac.9h":"台球桌 – 免费","fac.9p":"与家人朋友一起畅玩台球或桌球。",
@@ -1371,166 +1409,4 @@ function updateSummary(){
 ["checkin","checkout","room","guests"].forEach(id => $(id).addEventListener("change", updateSummary));
 
 function buildBooking(channel){
-  const L = T[LANG], M = L.m || T.en.m, ML = L.m ? LANG : "en", NF = L.m ? L.nights : T.en.nights;
-  $("err").textContent = ""; $("ok").textContent = "";
-  const r = ROOMS.find(x => x.id === $("room").value), n = nights();
-  if (!(n >= 1)) { $("err").textContent = L.errDates; return null; }
-  if (!$("name").value.trim()) { $("err").textContent = L.errName; $("name").focus(); return null; }
-  if (!$("phone").value.trim() && !$("email").value.trim()) { $("err").textContent = L.errContact; $("phone").focus(); return null; }
-  const b = {
-    ref: HOTEL.source + "-" + Date.now().toString(36).slice(-5).toUpperCase(),
-    name: $("name").value.trim(), checkin: $("checkin").value, checkout: $("checkout").value,
-    nights: n, room: r.name.en, guests: $("guests").value, total: r.price * n,
-    phone: $("phone").value.trim() || "-", email: $("email").value.trim() || "-",
-    notes: $("notes").value.trim() || "-", channel: channel, lang: LANG,
-    flight: $("flight").value.trim().toUpperCase() || "-", pickup: $("pickup").checked ? "Yes" : "No"
-  };
-  b.text = [
-    M.title, "",
-    `${M.name}: ${b.name}`, `${M.in}: ${b.checkin}`, `${M.out}: ${b.checkout} (${NF(n)})`,
-    `${M.room}: ${r.name[ML]}`, `${M.guests}: ${b.guests}`, `${M.total}: US$${b.total}`,
-    `${M.flight}: ${b.flight}`, `${M.pickup}: ${b.pickup}`,
-    `${M.phone}: ${b.phone}`, `${M.email}: ${b.email}`, `${M.notes}: ${b.notes}`, "",
-    `${M.ref}: ${b.ref}`
-  ].join("\n");
-  return b;
-}
-function logToSheet(b){
-  if (!HOTEL.sheetUrl) return;
-  try {
-    const data = Object.assign({}, b); delete data.text;
-    const body = JSON.stringify(data);
-    if (!(navigator.sendBeacon && navigator.sendBeacon(HOTEL.sheetUrl, new Blob([body], {type:"text/plain"})))) {
-      fetch(HOTEL.sheetUrl, {method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain"}, body, keepalive:true});
-    }
-  } catch(e) { console.error("Sheet log failed", e); }
-}
-$("sendWa").addEventListener("click", () => {
-  const b = buildBooking("WhatsApp"); if (!b) return;
-  logToSheet(b);
-  window.open(waBase + "?text=" + encodeURIComponent(b.text), "_blank", "noopener");
-  $("ok").textContent = T[LANG].sent(HOTEL.phoneDisplay);
-});
-$("sendMail").addEventListener("click", () => {
-  const b = buildBooking("Email"); if (!b) return;
-  logToSheet(b);
-  $("ok").textContent = T[LANG].sent(HOTEL.phoneDisplay);
-  setTimeout(() => {
-    location.href = "mailto:" + HOTEL.email + "?subject=" + encodeURIComponent((T[LANG].m || T.en.m).title + " – " + b.name + " (" + b.ref + ")") + "&body=" + encodeURIComponent(b.text);
-  }, 300);
-});
-
-renderSocial();
-
-/* Tracked quick contacts: every WhatsApp button, phone tap and email tap
-   is logged to the Google Sheet. WhatsApp chats also carry a ref code. */
-function newRef(){ return HOTEL.source + "-" + Date.now().toString(36).slice(-5).toUpperCase(); }
-function logContact(channel, ref){
-  logToSheet({ ref: ref || "-", name:"-", checkin:"-", checkout:"-", nights:"-", room:"-", guests:"-",
-               total:"-", phone:"-", email:"-", notes:"Quick contact (no form)", channel: channel, lang: LANG });
-}
-function openTrackedChat(e){
-  e.preventDefault();
-  if (LANG === "zh" && HOTEL.wechat) { quickChat("wc"); return; }
-  const ref = newRef();
-  logContact("WhatsApp chat", ref);
-  const msg = T[LANG].floatMsg + "\n\nRef: " + ref;
-  window.open(waBase + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
-}
-["waFloat","mbarWa"].forEach(id => $(id).addEventListener("click", openTrackedChat));
-
-/* Telegram & WeChat: copy the message (with ref) and guide the guest */
-function copyText(t){
-  const ta = $("cdMsg"); ta.value = t;
-  const fallback = () => { try { ta.select(); document.execCommand("copy"); } catch(e) {} };
-  if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).catch(fallback); } else { fallback(); }
-}
-function openChat(kind, text, ref){
-  const g = k => T[LANG][k] ?? T.en[k];
-  $("cdTitle").textContent = g("dlg." + kind + ".h");
-  $("cdText").textContent = g("dlg." + kind + ".p");
-  $("cdId").textContent = kind === "wc" ? HOTEL.wechat : "";
-  $("cdId").hidden = kind !== "wc";
-  $("cdOpen").hidden = kind !== "tg";
-  $("cdOpen").href = "https://t.me/" + HOTEL.telegram.replace(/[\s]/g, "").replace(/^@/, "");
-  $("cdRef").textContent = ref;
-  if (!$("chatDlg").open) $("chatDlg").showModal();
-  copyText(text);
-}
-function quickChat(kind){
-  const ref = newRef();
-  logContact(kind === "tg" ? "Telegram chat" : "WeChat chat", ref);
-  openChat(kind, (T[LANG].floatMsg || T.en.floatMsg) + "\n\nRef: " + ref, ref);
-}
-$("tgLink").addEventListener("click", () => quickChat("tg"));
-$("wcLink").addEventListener("click", () => quickChat("wc"));
-$("sendTg").addEventListener("click", () => { const b = buildBooking("Telegram"); if (!b) return; logToSheet(b); openChat("tg", b.text, b.ref); });
-$("sendWc").addEventListener("click", () => { const b = buildBooking("WeChat"); if (!b) return; logToSheet(b); openChat("wc", b.text, b.ref); });
-$("cdCopy").addEventListener("click", () => copyText($("cdMsg").value));
-$("cdClose").addEventListener("click", () => $("chatDlg").close());
-if (!HOTEL.telegram) { $("sendTg").hidden = true; $("tgLink").hidden = true; }
-if (!HOTEL.wechat) { $("sendWc").hidden = true; $("wcLink").hidden = true; }
-$("lateWa").addEventListener("click", e => {
-  e.preventDefault();
-  const ref = newRef();
-  logContact("WhatsApp late-arrival question", ref);
-  const msg = "Hi Meth Suites, I'm arriving late at Colombo Airport and would like to ask about late check-in. (via website)\n\nRef: " + ref;
-  window.open(waBase + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
-});
-$("phoneLink").addEventListener("click", () => logContact("Phone call"));
-$("emailLink").addEventListener("click", () => logContact("Email link"));
-
-/* Moving review slider */
-function renderReviews(){
-  const sec = $("reviews");
-  if (!REVIEWS.length) return;   /* live Google reviews come from the Trustindex widget */
-  sec.querySelector(".marquee").hidden = false;
-  const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const card = r => `<article class="rev">
-      <div class="stars" aria-label="${r.stars} out of 5">${"★".repeat(r.stars)}${"☆".repeat(5 - r.stars)}</div>
-      <q>${esc(r.text)}</q>
-      <footer><span><b>${esc(r.name)}</b>${r.country ? " · " + esc(r.country) : ""}</span><span class="src">${esc(r.source)}</span></footer>
-    </article>`;
-  const once = REVIEWS.map(card).join("");
-  const track = $("revTrack");
-  track.innerHTML = once + once.replace(/<article class="rev">/g, '<article class="rev" aria-hidden="true">');
-  track.style.setProperty("--dur", (REVIEWS.length * 9) + "s");
-}
-renderReviews();
-
-/* Gallery lightbox: tap a photo to see it large */
-let lbIndex = 0;
-function lbPhotos(){ return [...document.querySelectorAll(".gallery .ph")].filter(f => f.querySelector("img")); }
-function lbShow(i){
-  const list = lbPhotos(); if (!list.length) return;
-  lbIndex = (i + list.length) % list.length;
-  const f = list[lbIndex], img = f.querySelector("img");
-  $("lbImg").src = img.src; $("lbImg").alt = img.alt;
-  $("lbCap").textContent = f.querySelector("figcaption")?.textContent || "";
-}
-document.querySelector(".gallery").addEventListener("click", e => {
-  const f = e.target.closest(".ph"); if (!f || !f.querySelector("img")) return;
-  lbShow(lbPhotos().indexOf(f)); $("lb").showModal();
-});
-$("lbClose").addEventListener("click", () => $("lb").close());
-$("lbPrev").addEventListener("click", () => lbShow(lbIndex - 1));
-$("lbNext").addEventListener("click", () => lbShow(lbIndex + 1));
-$("lb").addEventListener("click", e => { if (e.target === $("lb")) $("lb").close(); });
-document.addEventListener("keydown", e => {
-  if (!$("lb").open) return;
-  if (e.key === "ArrowRight") lbShow(lbIndex + 1);
-  if (e.key === "ArrowLeft") lbShow(lbIndex - 1);
-});
-
-/* Start: remembered language, else English */
-let saved = null;
-try { saved = localStorage.getItem("meth-lang"); } catch(e) {}
-if (!saved) {   /* first visit: use the phone/browser language if we have it */
-  const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
-  saved = "en";
-  for (const l of prefs) { const c = String(l).toLowerCase().slice(0,2); if (T[c]) { saved = c; break; } }
-}
-setLang(saved);
-</script>
-</body>
-</html>
+  const L = T[L
