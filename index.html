@@ -344,7 +344,6 @@ footer .social a:hover{border-color:#EFE6D6}
 
 /* Guest review slider */
 .reviews-sec{padding-top:0;overflow:hidden}
-.tx-wrap{min-height:180px}
 .marquee{position:relative;margin-top:8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .track{display:flex;gap:20px;width:max-content;animation:slide var(--dur,40s) linear infinite}
 .marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
@@ -589,10 +588,6 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
       <p class="lead" data-t="rev.lead">Real words from people who stayed with us.</p>
     </div>
     <div class="marquee" tabindex="0" aria-label="Guest reviews" hidden><div class="track" id="revTrack"></div></div>
-    <div class="wrap tx-wrap">
-      <!-- Live Google reviews (Trustindex) -->
-      <script defer async src='https://cdn.trustindex.io/loader.js?0812a6f8309b8609ae56a938302'></script>
-    </div>
   </section>
 
   <section id="rooms" class="rooms-bg">
@@ -806,8 +801,11 @@ const SOCIAL = {
    stars: 1-5   source: where it came from, e.g. "Google", "WhatsApp", "Guest book"
    Delete all entries [] to hide the slider. */
 const REVIEWS = [
-  /* Add real reviews here, one per line, for example:
-  { stars:5, text:"Guest's real words", name:"Anna", country:"Germany", source:"Google" }, */
+  { stars:5, text:"Had a great stay at the hotel. Mr. Gajan provided excellent service and was very friendly and helpful throughout our stay. The hotel was very clean, comfortable, and well-maintained. Really appreciated the hospitality and attention to detail. Highly recommended!", name:"Mr. Nidu", country:"", source:"Google" },
+  { stars:5, text:"Such a nice place, budget friendly and really good service. We have been there more than 6 times on last two years.", name:"Naween Muthusamy", country:"", source:"Google" },
+  { stars:5, text:"An absolute hidden gem! Impeccably clean, lightning-fast Wi-Fi, incredibly friendly staff, and a fantastic location. Will definitely be staying here again on my next trip.", name:"Sin Chan", country:"", source:"Google" },
+  { stars:5, text:"Good service and great location", name:"Hasitha Jayaweera", country:"", source:"Google" },
+  /* Add more real reviews here, one per line, same format. */
 ];
 
 /* Guest ratings from travel sites. Update these numbers every month.
@@ -1529,7 +1527,7 @@ $("footEmail").addEventListener("click", () => logContact("Email link (footer)")
 /* Moving review slider */
 function renderReviews(){
   const sec = $("reviews");
-  if (!REVIEWS.length) return;   /* live Google reviews come from the Trustindex widget */
+  if (!REVIEWS.length) return;   /* no reviews = slider stays hidden */
   sec.querySelector(".marquee").hidden = false;
   const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const card = r => `<article class="rev">
