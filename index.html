@@ -617,16 +617,12 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
     </div>
   </section>
 
-  <section class="reviews-sec" id="reviews">
+  <section class="reviews-sec" id="reviews" hidden>
     <div class="wrap">
       <h2 data-t="rev.h2">What our guests say</h2>
       <p class="lead" data-t="rev.lead">Real words from people who stayed with us.</p>
     </div>
     <div class="marquee" tabindex="0" aria-label="Guest reviews" hidden><div class="track" id="revTrack"></div></div>
-    <div class="wrap tx-wrap">
-      <!-- Live Google reviews (Trustindex) -->
-      <script defer async src='https://cdn.trustindex.io/loader.js?0812a6f8309b8609ae56a938302'></script>
-    </div>
   </section>
 
   <section id="rooms" class="rooms-bg">
@@ -1589,7 +1585,8 @@ $("footEmail").addEventListener("click", () => logContact("Email link (footer)")
 /* Moving review slider */
 function renderReviews(){
   const sec = $("reviews");
-  if (!REVIEWS.length) return;   /* live Google reviews come from the Trustindex widget */
+  if (!REVIEWS.length) return;   /* section stays hidden until real, selected reviews are added below */
+  sec.hidden = false;
   sec.querySelector(".marquee").hidden = false;
   const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const card = r => `<article class="rev">
