@@ -411,6 +411,18 @@ footer .social a:hover{border-color:#EFE6D6}
 /* Gallery */
 .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:12px;grid-auto-flow:dense}
 .gallery .ph-tall{grid-row:span 2}
+@media (min-width:701px){
+  .gallery{grid-auto-flow:row}
+  .gallery .ph:nth-child(1){grid-area:1/1/3/2}
+  .gallery .ph:nth-child(2){grid-area:1/2/2/3}
+  .gallery .ph:nth-child(3){grid-area:1/3/2/4}
+  .gallery .ph:nth-child(4){grid-area:2/2/3/3}
+  .gallery .ph:nth-child(6){grid-area:2/3/3/4}
+  .gallery .ph:nth-child(5){grid-area:3/1/5/2}
+  .gallery .ph:nth-child(7){grid-area:3/2/5/3}
+  .gallery .ph:nth-child(8){grid-area:3/3/5/4}
+  .gallery .ph:nth-child(9){grid-area:5/1/7/4}
+}
 .gallery .ph-wide{grid-column:1/-1;grid-row:span 2}
 .gallery .ph-wide img{object-position:center 88%}
 .gallery .ph{margin:0;border-radius:14px;overflow:hidden;background:linear-gradient(150deg,var(--lagoon-2),var(--husk));position:relative}
@@ -667,11 +679,10 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
         <figure class="ph"><img src="room2.jpeg" alt="King Suite bedroom" onerror="this.remove()"><figcaption data-t="gal.c2">King Suite</figcaption></figure>
         <figure class="ph"><img src="dining-room.jpg" alt="Bright restaurant at Meth Suites with large windows and palm tree views" onerror="this.remove()"><figcaption data-t="gal.c3">Restaurant</figcaption></figure>
         <figure class="ph"><img src="rooftop-terrace.jpg" alt="Rooftop terrace with white chairs, orange cushions and sea view at Meth Suites" onerror="this.remove()"><figcaption data-t="gal.c4">Rooftop</figcaption></figure>
-        <figure class="ph"><img src="terrace.jpg" alt="Garden terrace with flowers and seating" onerror="this.remove()"><figcaption data-t="gal.c5">Garden terrace</figcaption></figure>
         <figure class="ph ph-bbq ph-tall"><img src="bbq.jpeg" alt="Sunset barbecue on the Meth Suites rooftop deck with sea view" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c6">Rooftop BBQ</figcaption></figure>
         <figure class="ph"><img src="room1.jpeg" alt="Deluxe Twin Room with two single beds" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c7">Deluxe Twin Room</figcaption></figure>
         <figure class="ph ph-tall"><img src="billiards.jpg" alt="Free billiards and pool table at Meth Suites" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c9">Billiards</figcaption></figure>
-        <figure class="ph"><img src="family-room.jpg" alt="Family Room at Meth Suites" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c8">Family Room</figcaption></figure>
+        <figure class="ph ph-tall"><img src="family-room.jpg" alt="Family Room at Meth Suites" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c8">Family Room</figcaption></figure>
         <figure class="ph ph-wide"><img src="sea-view.jpg" alt="Sea view with palm trees from Meth Suites, Pamunugama" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c10">Sea view from the hotel</figcaption></figure>
       </div>
     </div>
