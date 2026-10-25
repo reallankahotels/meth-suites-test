@@ -395,14 +395,14 @@ footer .social a:hover{border-color:#EFE6D6}
 
 
 /* Gallery */
-.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:12px}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:12px;grid-auto-flow:dense}
+.gallery .ph-tall{grid-row:span 2}
 .gallery .ph{margin:0;border-radius:14px;overflow:hidden;background:linear-gradient(150deg,var(--lagoon-2),var(--husk));position:relative}
 .gallery .ph:first-child{grid-row:span 2}
 .gallery .ph img{width:100%;height:100%;object-fit:cover}
 .gallery .ph-bbq img{object-position:center 22%}
 .gallery .ph figcaption{position:absolute;left:12px;bottom:10px;color:#fff;font-size:.88rem;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.5)}
-@media (max-width:700px){.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
-  .gallery .ph:last-child:nth-child(even){grid-column:span 2}.gallery .ph:first-child{grid-column:span 2;grid-row:span 1}}
+@media (max-width:700px){.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:160px}.gallery .ph:first-child{grid-column:span 2;grid-row:span 1}}
 
 /* Booking */
 .book-bg{background:var(--lagoon);color:#fff}
@@ -644,8 +644,9 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
         <figure class="ph"><img src="restaurant.jpg" alt="Restaurant with large windows and palm view" onerror="this.remove()"><figcaption data-t="gal.c3">Restaurant</figcaption></figure>
         <figure class="ph"><img src="rooftop-terrace.jpg" alt="Rooftop terrace with white chairs, orange cushions and sea view at Meth Suites" onerror="this.remove()"><figcaption data-t="gal.c4">Rooftop</figcaption></figure>
         <figure class="ph"><img src="terrace.jpg" alt="Garden terrace with flowers and seating" onerror="this.remove()"><figcaption data-t="gal.c5">Garden terrace</figcaption></figure>
-        <figure class="ph ph-bbq"><img src="bbq.jpeg" alt="Sunset barbecue on the Meth Suites rooftop deck with sea view" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c6">Rooftop BBQ</figcaption></figure>
+        <figure class="ph ph-bbq ph-tall"><img src="bbq.jpeg" alt="Sunset barbecue on the Meth Suites rooftop deck with sea view" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c6">Rooftop BBQ</figcaption></figure>
         <figure class="ph"><img src="room1.jpeg" alt="Deluxe Twin Room with two single beds" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c7">Deluxe Twin Room</figcaption></figure>
+        <figure class="ph ph-tall"><img src="billiards.jpg" alt="Free billiards and pool table at Meth Suites" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c9">Billiards</figcaption></figure>
         <figure class="ph"><img src="family-room.jpg" alt="Family Room at Meth Suites" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c8">Family Room</figcaption></figure>
       </div>
     </div>
@@ -836,6 +837,7 @@ const ROOMS = [{"id": "twin", "price": 35, "guests": 2, "size": 16, "img": "room
 /* Page text in Sinhala and Tamil (English comes from the page itself) */
 const T = {
 si:{
+  "gal.c9":"බිලියඩ්",
   "gal.c6":"Rooftop BBQ","gal.c7":"ඩීලක්ස් ට්වින් කාමරය (Deluxe Twin)","gal.c8":"ෆැමිලි රූම් (Family Room)",
   "foot.contact":"සම්බන්ධ වන්න","foot.links":"ඉක්මන් සබැඳි","foot.priv":"රහස්‍යතා ප්‍රතිපත්තිය","book.privPre":"ඔබගේ තොරතුරු අප හසුරුවන ආකාරය අපගේ","book.privLink":"රහස්‍යතා ප්‍රතිපත්තියෙන්","book.privPost":" කියවන්න.",
   "book.eye":"පහසු වෙන්කිරීම","book.trust":"ඔබගේ ඉල්ලීම කෙලින්ම හෝටල් කණ්ඩායමට ලැබේ — පුද්ගලිකව පිළිතුරු ලැබේ.","book.k1h":"සාධාරණ ගාස්තු","book.k1":"Meth Suites සමඟ සෘජුවම වෙන්කරවා ගන්න","book.k2h":"පහසු ගෙවීම් ක්‍රම","book.k2":"කාඩ්පත, මුදල් හෝ ආරක්ෂිත ගෙවීම් සබැඳිය","book.k3h":"නොමිලේ අවලංගු කිරීම","book.k3":"පැමිණීමට පැය 24කට පෙර දක්වා*","book.k4h":"ගුවන්තොටුපළට ගෙන යාම","book.k4":"ඉල්ලීම මත ලබාගත හැක","book.k3n":"*ඉන් පසු අවලංගු කිරීම් සහ නොපැමිණීම් සඳහා සම්පූර්ණ ගාස්තුව අය කෙරේ.","roomPerk":"✓ නොමිලේ අවලංගු කිරීම · හෝටලයේදී ගෙවන්න",
@@ -928,6 +930,7 @@ si:{
   floatMsg:"Hi Meth Suites, I'd like to ask about a room. (via website)"
 },
 ta:{
+  "gal.c9":"பில்லியர்ட்ஸ்",
   "gal.c6":"கூரை மேல் BBQ","gal.c7":"டீலக்ஸ் ட்வின் அறை","gal.c8":"குடும்ப அறை",
   "foot.contact":"தொடர்புக்கு","foot.links":"விரைவு இணைப்புகள்","foot.priv":"தனியுரிமைக் கொள்கை","book.privPre":"உங்கள் விவரங்களை நாங்கள் எவ்வாறு கையாள்கிறோம் என்பதை எங்கள்","book.privLink":"தனியுரிமைக் கொள்கையில்","book.privPost":" படியுங்கள்.",
   "book.eye":"எளிதான முன்பதிவு","book.trust":"உங்கள் கோரிக்கை நேரடியாக ஹோட்டல் குழுவிடம் செல்லும் — தனிப்பட்ட முறையில் பதில் அளிக்கப்படும்.","book.k1h":"நியாயமான விலை","book.k1":"Meth Suites உடன் நேரடியாக முன்பதிவு செய்யுங்கள்","book.k2h":"வசதியான கட்டண முறைகள்","book.k2":"கார்டு, ரொக்கம் அல்லது பாதுகாப்பான கட்டண இணைப்பு","book.k3h":"இலவச ரத்து","book.k3":"வருகைக்கு 24 மணி நேரம் முன்பு வரை*","book.k4h":"விமான நிலையத்திற்கு வாகன வசதி","book.k4":"கோரிக்கையின் பேரில் கிடைக்கும்","book.k3n":"*அதற்குப் பிறகு ரத்து செய்தால் அல்லது வராவிட்டால் முழுத் தொகை வசூலிக்கப்படும்.","roomPerk":"✓ இலவச ரத்து · ஹோட்டலில் செலுத்துங்கள்",
@@ -1012,6 +1015,7 @@ ta:{
   floatMsg:"Hi Meth Suites, I'd like to ask about a room. (via website)"
 },
 hi:{
+  "gal.c9":"बिलियर्ड्स",
   "gal.c6":"रूफ़टॉप BBQ","gal.c7":"डीलक्स ट्विन रूम","gal.c8":"फ़ैमिली रूम",
   "foot.contact":"संपर्क","foot.links":"उपयोगी लिंक","foot.priv":"गोपनीयता नीति","book.privPre":"हम आपकी जानकारी कैसे संभालते हैं, यह हमारी","book.privLink":"गोपनीयता नीति","book.privPost":" में पढ़ें।",
   "book.eye":"आसान बुकिंग","book.trust":"आपका अनुरोध सीधे होटल टीम तक पहुँचता है — असली लोग, निजी जवाब।","book.k1h":"किफ़ायती रेट","book.k1":"Meth Suites से सीधे बुक करें","book.k2h":"भुगतान के आसान विकल्प","book.k2":"कार्ड, नकद या सुरक्षित पेमेंट लिंक","book.k3h":"मुफ़्त रद्दीकरण","book.k3":"आगमन से 24 घंटे पहले तक*","book.k4h":"एयरपोर्ट ड्रॉप-ऑफ़","book.k4":"अनुरोध पर उपलब्ध","book.k3n":"*इसके बाद रद्द करने या न आने पर पूरी राशि ली जाएगी।","roomPerk":"✓ मुफ़्त रद्दीकरण · होटल में भुगतान",
@@ -1097,6 +1101,7 @@ hi:{
 },
 
 ru:{
+  "gal.c9":"Бильярд",
   "gal.c6":"Барбекю на крыше","gal.c7":"Делюкс с двумя кроватями","gal.c8":"Семейный номер",
   "foot.contact":"Контакты","foot.links":"Быстрые ссылки","foot.priv":"Политика конфиденциальности","book.privPre":"Как мы обрабатываем ваши данные, читайте в нашей","book.privLink":"политике конфиденциальности","book.privPost":".",
   "book.eye":"Простое бронирование","book.trust":"Ваш запрос попадает прямо к команде отеля — отвечают живые люди.","book.k1h":"Выгодные цены","book.k1":"бронируйте напрямую в Meth Suites","book.k2h":"Удобная оплата","book.k2":"картой, наличными или по защищённой платёжной ссылке","book.k3h":"Бесплатная отмена","book.k3":"до 24 часов до заезда*","book.k4h":"Трансфер в аэропорт","book.k4":"по запросу","book.k3n":"*При более поздней отмене или неявке взимается полная стоимость.","roomPerk":"✓ Бесплатная отмена · Оплата в отеле",
@@ -1182,6 +1187,7 @@ ru:{
 },
 
 zh:{
+  "gal.c9":"台球",
   "gal.c6":"屋顶烧烤","gal.c7":"豪华双床房","gal.c8":"家庭房",
   "foot.contact":"联系我们","foot.links":"快速链接","foot.priv":"隐私政策","book.privPre":"了解我们如何处理您的信息，请阅读我们的","book.privLink":"隐私政策","book.privPost":"。",
   "book.eye":"轻松预订","book.trust":"您的请求直接发送给酒店团队——真人亲自回复。","book.k1h":"价格合理","book.k1":"直接向 Meth Suites 预订","book.k2h":"灵活支付方式","book.k2":"刷卡、现金或安全付款链接","book.k3h":"免费取消","book.k3":"最晚于入住前24小时*","book.k4h":"送机服务","book.k4":"可按需安排","book.k3n":"*逾期取消或未入住将收取全额费用。","roomPerk":"✓ 免费取消 · 到店付款",
