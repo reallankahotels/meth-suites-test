@@ -309,6 +309,20 @@ html:lang(si) .hero h1,html:lang(ta) .hero h1,html:lang(hi) .hero h1,html:lang(z
 .room-perk{margin:10px 0 0;width:100%;font-size:.85rem;font-weight:600;color:var(--lagoon-2)}
 
 .priv-note a{color:var(--lagoon-2);font-weight:600}
+/* Eco / solar strip */
+.eco{margin-top:22px;display:grid;grid-template-columns:1.3fr 1fr;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-align:left}
+.eco img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block}
+.eco-txt{padding:26px 28px}
+.eco-eye{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-weight:700;color:#2E8B57}
+.eco-ico{width:34px;height:34px;border-radius:50%;background:rgba(46,139,87,.14);display:grid;place-items:center}
+.eco-ico svg{width:20px;height:20px;fill:none;stroke:#2E8B57;stroke-width:1.9;stroke-linecap:round}
+.eco h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin:0 0 8px}
+.eco-txt p:last-child{margin:0;color:var(--muted);line-height:1.6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .eco-eye{color:#6FCF97}:root:not([data-theme="light"]) .eco-ico svg{stroke:#6FCF97}}
+:root[data-theme="dark"] .eco-eye{color:#6FCF97}
+:root[data-theme="dark"] .eco-ico svg{stroke:#6FCF97}
+@media (max-width:760px){.eco{grid-template-columns:1fr}.eco img{min-height:0;aspect-ratio:16/8}}
+
 /* Sections */
 section{padding:84px 20px}
 .wrap{max-width:1180px;margin:auto}
@@ -397,6 +411,8 @@ footer .social a:hover{border-color:#EFE6D6}
 /* Gallery */
 .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:12px;grid-auto-flow:dense}
 .gallery .ph-tall{grid-row:span 2}
+.gallery .ph-wide{grid-column:1/-1;grid-row:span 2}
+.gallery .ph-wide img{object-position:center 88%}
 .gallery .ph{margin:0;border-radius:14px;overflow:hidden;background:linear-gradient(150deg,var(--lagoon-2),var(--husk));position:relative}
 .gallery .ph:first-child{grid-row:span 2}
 .gallery .ph img{width:100%;height:100%;object-fit:cover}
@@ -631,6 +647,14 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
         <div class="fac"><span class="fac-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="10" r="2"/><circle cx="9" cy="5" r="2"/><circle cx="15" cy="5" r="2"/><circle cx="19" cy="10" r="2"/><path d="M8 18c0-3 2-6 4-6s4 3 4 6c0 2-2 2-4 1.5-2 .5-4 .5-4-1.5z"/></svg></span><div><h3 data-t="fac.8h">Pet-friendly stays</h3><p data-t="fac.8p">Pets welcome by prior arrangement.</p></div></div>
         <div class="fac"><span class="fac-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10.5" r="3.6"/><path d="M12 9.2v2.6"/></svg></span><div><h3 data-t="fac.9h">Billiards &amp; pool table – free</h3><p data-t="fac.9p">Play billiards or a friendly game of pool with family and friends.</p></div></div>
       </div>
+      <div class="eco">
+        <img src="solar.jpg" alt="Solar panels on the Meth Suites roof with palm trees and sea view" loading="lazy">
+        <div class="eco-txt">
+          <p class="eco-eye"><span class="eco-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><span data-t="eco.eye">Eco-friendly</span></p>
+          <h3 data-t="eco.h">Powered by the sun</h3>
+          <p data-t="eco.p">Solar panels on our roof help power the hotel with clean, renewable energy, so your stay has a lighter footprint on this beautiful coast.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -648,6 +672,7 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
         <figure class="ph"><img src="room1.jpeg" alt="Deluxe Twin Room with two single beds" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c7">Deluxe Twin Room</figcaption></figure>
         <figure class="ph ph-tall"><img src="billiards.jpg" alt="Free billiards and pool table at Meth Suites" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c9">Billiards</figcaption></figure>
         <figure class="ph"><img src="family-room.jpg" alt="Family Room at Meth Suites" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c8">Family Room</figcaption></figure>
+        <figure class="ph ph-wide"><img src="sea-view.jpg" alt="Sea view with palm trees from Meth Suites, Pamunugama" loading="lazy" onerror="this.remove()"><figcaption data-t="gal.c10">Sea view from the hotel</figcaption></figure>
       </div>
     </div>
   </section>
@@ -837,6 +862,8 @@ const ROOMS = [{"id": "twin", "price": 35, "guests": 2, "size": 16, "img": "room
 /* Page text in Sinhala and Tamil (English comes from the page itself) */
 const T = {
 si:{
+  "eco.eye":"පරිසර හිතකාමී","eco.h":"හිරු එළියෙන් බලය","eco.p":"අපගේ වහලය මත ඇති සූර්ය පැනල මගින් පිරිසිදු, පුනර්ජනනීය බලශක්තියෙන් හෝටලයට බලය සපයන අතර, මෙම සුන්දර වෙරළ තීරයට ඔබගේ නවාතැනෙන් වන බලපෑම අඩු කරයි.",
+  "gal.c10":"හෝටලයේ සිට මුහුදු දසුන",
   "gal.c9":"බිලියඩ්",
   "gal.c6":"Rooftop BBQ","gal.c7":"ඩීලක්ස් ට්වින් කාමරය (Deluxe Twin)","gal.c8":"ෆැමිලි රූම් (Family Room)",
   "foot.contact":"සම්බන්ධ වන්න","foot.links":"ඉක්මන් සබැඳි","foot.priv":"රහස්‍යතා ප්‍රතිපත්තිය","book.privPre":"ඔබගේ තොරතුරු අප හසුරුවන ආකාරය අපගේ","book.privLink":"රහස්‍යතා ප්‍රතිපත්තියෙන්","book.privPost":" කියවන්න.",
@@ -930,6 +957,8 @@ si:{
   floatMsg:"Hi Meth Suites, I'd like to ask about a room. (via website)"
 },
 ta:{
+  "eco.eye":"சுற்றுச்சூழலுக்கு உகந்தது","eco.h":"சூரிய சக்தியால் இயங்கும்","eco.p":"எங்கள் கூரையில் உள்ள சூரிய மின் தகடுகள் சுத்தமான, புதுப்பிக்கத்தக்க ஆற்றலால் ஹோட்டலுக்கு மின்சாரம் வழங்க உதவுகின்றன — இந்த அழகிய கடற்கரைக்கு உங்கள் தங்குதல் குறைந்த தாக்கத்தையே ஏற்படுத்தும்.",
+  "gal.c10":"ஹோட்டலில் இருந்து கடல் காட்சி",
   "gal.c9":"பில்லியர்ட்ஸ்",
   "gal.c6":"கூரை மேல் BBQ","gal.c7":"டீலக்ஸ் ட்வின் அறை","gal.c8":"குடும்ப அறை",
   "foot.contact":"தொடர்புக்கு","foot.links":"விரைவு இணைப்புகள்","foot.priv":"தனியுரிமைக் கொள்கை","book.privPre":"உங்கள் விவரங்களை நாங்கள் எவ்வாறு கையாள்கிறோம் என்பதை எங்கள்","book.privLink":"தனியுரிமைக் கொள்கையில்","book.privPost":" படியுங்கள்.",
@@ -1015,6 +1044,8 @@ ta:{
   floatMsg:"Hi Meth Suites, I'd like to ask about a room. (via website)"
 },
 hi:{
+  "eco.eye":"पर्यावरण के अनुकूल","eco.h":"सूरज की ऊर्जा से","eco.p":"हमारी छत पर लगे सोलर पैनल होटल को स्वच्छ, नवीकरणीय ऊर्जा देने में मदद करते हैं, ताकि इस खूबसूरत तट पर आपके ठहराव का असर कम हो।",
+  "gal.c10":"होटल से समुद्र का नज़ारा",
   "gal.c9":"बिलियर्ड्स",
   "gal.c6":"रूफ़टॉप BBQ","gal.c7":"डीलक्स ट्विन रूम","gal.c8":"फ़ैमिली रूम",
   "foot.contact":"संपर्क","foot.links":"उपयोगी लिंक","foot.priv":"गोपनीयता नीति","book.privPre":"हम आपकी जानकारी कैसे संभालते हैं, यह हमारी","book.privLink":"गोपनीयता नीति","book.privPost":" में पढ़ें।",
@@ -1101,6 +1132,8 @@ hi:{
 },
 
 ru:{
+  "eco.eye":"Забота о природе","eco.h":"Энергия солнца","eco.p":"Солнечные панели на нашей крыше помогают снабжать отель чистой возобновляемой энергией — так ваш отдых бережнее к этому прекрасному побережью.",
+  "gal.c10":"Вид на море из отеля",
   "gal.c9":"Бильярд",
   "gal.c6":"Барбекю на крыше","gal.c7":"Делюкс с двумя кроватями","gal.c8":"Семейный номер",
   "foot.contact":"Контакты","foot.links":"Быстрые ссылки","foot.priv":"Политика конфиденциальности","book.privPre":"Как мы обрабатываем ваши данные, читайте в нашей","book.privLink":"политике конфиденциальности","book.privPost":".",
@@ -1187,6 +1220,8 @@ ru:{
 },
 
 zh:{
+  "eco.eye":"环保","eco.h":"太阳能供电","eco.p":"屋顶的太阳能板为酒店提供清洁的可再生能源，让您在这片美丽海岸的住宿更加环保。",
+  "gal.c10":"酒店海景",
   "gal.c9":"台球",
   "gal.c6":"屋顶烧烤","gal.c7":"豪华双床房","gal.c8":"家庭房",
   "foot.contact":"联系我们","foot.links":"快速链接","foot.priv":"隐私政策","book.privPre":"了解我们如何处理您的信息，请阅读我们的","book.privLink":"隐私政策","book.privPost":"。",
