@@ -957,7 +957,7 @@ si:{
   "foot.tag":"පමුණුගම පිහිටි සුන්දර පවුලේ බුටික් හෝටලය, ශ්‍රී ලංකාව","foot.by":"වෙබ් අඩවිය නිර්මාණය: RealLanka.",
   "float.wa":"WhatsApp හරහා සම්බන්ධ වන්න","bar.wa":"WhatsApp","bar.book":"වෙන්කරවා ගන්න","lb.close":"වසන්න",
   /* dynamic */
-  perNight:"/ රාත්‍රියකට", bookRoom:"මෙම කාමරය වෙන්කරවා ගන්න", sleeps:n=>`අමුත්තන් ${n} දෙනෙකුට`,
+  perNight:"/ රාත්‍රියකට",roomOnly:"· කාමරය පමණි", bookRoom:"මෙම කාමරය වෙන්කරවා ගන්න", sleeps:n=>`අමුත්තන් ${n} දෙනෙකුට`,
   nights:n=>`රාත්‍රී ${n}`,
   sumChoose:"ඇස්තමේන්තුගත ගාස්තුව බැලීමට දිනයන් තෝරන්න.",
   sumInvalid:"පැමිණෙන දිනයට පසු දිනයක් පිටත්වන දිනය ලෙස තෝරන්න.",
@@ -1044,7 +1044,7 @@ ta:{
   "loc.timesVal":"செக்-இன்: பிற்பகல் 2:00 மணி முதல் / செக்-அவுட்: நண்பகல் 12:00 மணி வரை","loc.phone":"தொலைபேசி & WhatsApp","loc.email":"மின்னஞ்சல்",
   "foot.tag":"குடும்பத்திற்குச் சொந்தமான சிறிய ஹோட்டல், பமுனுகம, இலங்கை","foot.by":"இணையதளம்: RealLanka.",
   "float.wa":"WhatsApp செய்யுங்கள்","bar.wa":"WhatsApp","bar.book":"முன்பதிவு செய்யுங்கள்","lb.close":"மூடு",
-  perNight:"/ இரவு", bookRoom:"இந்த அறையை முன்பதிவு செய்யுங்கள்", sleeps:n=>`${n} விருந்தினர்கள் தங்கலாம்`,
+  perNight:"/ இரவு",roomOnly:"· அறை மட்டும்", bookRoom:"இந்த அறையை முன்பதிவு செய்யுங்கள்", sleeps:n=>`${n} விருந்தினர்கள் தங்கலாம்`,
   nights:n=>`${n} இரவு`,
   sumChoose:"மதிப்பிடப்பட்ட விலையைப் பார்க்க தேதிகளைத் தேர்ந்தெடுங்கள்.",
   sumInvalid:"வருகை தேதிக்குப் பிறகான புறப்படும் தேதியைத் தேர்ந்தெடுங்கள்.",
@@ -1131,7 +1131,7 @@ hi:{
   "loc.times":"चेक-इन / चेक-आउट","loc.timesVal":"चेक-इन: दोपहर 2:00 बजे से / चेक-आउट: दोपहर 12:00 बजे तक","loc.phone":"फ़ोन और WhatsApp","loc.email":"ईमेल",
   "foot.tag":"पामुनुगामा, श्रीलंका में पारिवारिक बुटीक होटल","foot.by":"वेबसाइट: RealLanka.",
   "float.wa":"WhatsApp करें","bar.wa":"WhatsApp","bar.book":"बुक करें","lb.close":"बंद करें",
-  perNight:"/ रात", bookRoom:"यह कमरा बुक करें", sleeps:n=>`${n} मेहमानों के लिए`,
+  perNight:"/ रात",roomOnly:"· केवल कमरा", bookRoom:"यह कमरा बुक करें", sleeps:n=>`${n} मेहमानों के लिए`,
   nights:n=>`${n} रात`,
   sumChoose:"अनुमानित कीमत देखने के लिए तारीखें चुनें।",
   sumInvalid:"चेक-इन के बाद की चेक-आउट तारीख चुनें।",
@@ -1218,7 +1218,7 @@ ru:{
   "loc.times":"Заезд / выезд","loc.timesVal":"Заезд с 14:00 / выезд до 12:00","loc.phone":"Телефон и WhatsApp","loc.email":"Эл. почта",
   "foot.tag":"Семейный бутик-отель, Памунугама, Шри-Ланка","foot.by":"Сайт: RealLanka.","foot.blog":"Советы путешественникам (блог)",
   "float.wa":"Написать в WhatsApp","bar.wa":"WhatsApp","bar.book":"Проверить наличие","lb.close":"Закрыть",
-  perNight:"/ ночь", bookRoom:"Забронировать этот номер", sleeps:n=>`До ${n} гостей`,
+  perNight:"/ ночь",roomOnly:"· только номер", bookRoom:"Забронировать этот номер", sleeps:n=>`До ${n} гостей`,
   nights:n=>{const a=n%10,b=n%100;return n+" "+(a===1&&b!==11?"ночь":(a>=2&&a<=4&&(b<12||b>14)?"ночи":"ночей"))},
   sumChoose:"Выберите даты, чтобы увидеть примерную стоимость.",
   sumInvalid:"Выберите дату выезда позже даты заезда.",
@@ -1305,7 +1305,7 @@ zh:{
   "loc.times":"入住 / 退房","loc.timesVal":"14:00 后入住 / 12:00 前退房","loc.phone":"电话和WhatsApp","loc.email":"电子邮件",
   "foot.tag":"斯里兰卡帕穆努加马的家庭精品酒店","foot.by":"网站制作：RealLanka","foot.blog":"旅行小贴士（博客）",
   "float.wa":"微信联系","bar.wa":"微信","bar.book":"预订","lb.close":"关闭",
-  perNight:"/ 晚", bookRoom:"预订此房", sleeps:n=>`可住${n}人`,
+  perNight:"/ 晚",roomOnly:"· 仅房费", bookRoom:"预订此房", sleeps:n=>`可住${n}人`,
   nights:n=>`${n}晚`,
   sumChoose:"选择日期以查看估算价格。",
   sumInvalid:"请选择晚于入住日期的退房日期。",
@@ -1325,7 +1325,7 @@ en:{
   "dlg.wc.h":"Contact us on WeChat","dlg.wc.p":"Open WeChat \u2192 tap + \u2192 Add Contacts \u2192 search the number below, then paste and send the message.",
   sent:p=>`Your request is ready – please press Send in WhatsApp or your email app. The hotel usually replies within a few hours. No reply? Call ${p}.`,
   reviews:"reviews",
-  perNight:"/ night", bookRoom:"Book this room", sleeps:n=>`Sleeps ${n} guests`,
+  perNight:"/ night",roomOnly:"· room only", bookRoom:"Book this room", sleeps:n=>`Sleeps ${n} guests`,
   nights:n=>`${n} night${n>1?"s":""}`,
   sumChoose:"Choose your dates to see the estimated price.",
   sumInvalid:"Choose a check-out date after your check-in date.",
@@ -1365,7 +1365,7 @@ function renderRooms(){
         <ul>${r.features[LANG].map(f => `<li>${f}</li>`).join("")}</ul>
         <p class="bf">${L.bfNote || T.en.bfNote}</p>
         <div class="price">
-          <div><b>US$${r.price}</b> <small>${L.perNight}</small></div>
+          <div><b>US$${r.price}</b> <small>${L.perNight} ${L.roomOnly || T.en.roomOnly}</small></div>
           <a href="#book" class="btn" data-room="${r.id}">${L.bookRoom}</a>
           <p class="room-perk">${L.roomPerk || T.en.roomPerk}</p>
         </div>
