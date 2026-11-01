@@ -88,6 +88,7 @@ footer a:hover{text-decoration:underline}
 .cta p a{color:#fff;text-decoration:underline}
 @media (max-width:560px){.near-box{grid-template-columns:1fr}}
 </style>
+<script src="/analytics.js" defer></script>
 </head>
 <body>
 <header><nav class="nav"><a class="brand" href="../index.html">Meth Suites</a>
@@ -184,6 +185,7 @@ footer a:hover{text-decoration:underline}
         <li><a href="../index.html#book">Book direct</a></li>
         <li><a href="../blog.html">Travel tips (blog)</a></li>
         <li><a href="../privacy.html">Privacy policy</a></li>
+        <li><a href="#" data-cookie-settings>Cookie settings</a></li>
       </ul>
     </div>
   </div>
@@ -195,6 +197,7 @@ footer a:hover{text-decoration:underline}
   var SHEET = "https://script.google.com/macros/s/AKfycbyxWihzZcFYqcLpasMk9grpafCJWs5ce14-Ik4qkmG894qgJllyAPEZ-fHf_cwwUoyhiw/exec", src = "METH";
   function ref(){ return src + "-" + Date.now().toString(36).slice(-5).toUpperCase(); }
   function log(channel, r){
+    try { if (window.methTrack) window.methTrack(channel, "quick_contact"); } catch(e) {}
     try {
       var body = JSON.stringify({ ref: r || "-", name:"-", checkin:"-", checkout:"-", nights:"-", room:"-", guests:"-",
         total:"-", phone:"-", email:"-", notes:"Quick contact (blog: " + location.pathname.split("/").pop() + ")", channel: channel, lang:"en" });
