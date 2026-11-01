@@ -481,7 +481,9 @@ footer .foot-grid{display:grid;grid-template-columns:1.2fr 1.3fr 1fr;gap:32px;al
 .foot-list svg{flex:none;width:18px;height:18px;margin-top:3px;fill:none;stroke:var(--mango);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 footer a{color:#EFE6D6;text-decoration:none}
 footer a:hover{text-decoration:underline}
-footer .foot-bottom{border-top:1px solid rgba(239,230,214,.2);margin-top:26px;padding-top:16px;font-size:.85rem;opacity:.8;display:block}
+footer .foot-bottom .dev-link{color:inherit;text-decoration:none;white-space:nowrap;border-bottom:1px dotted currentColor}
+footer .foot-bottom .dev-link:hover,footer .foot-bottom .dev-link:focus-visible{opacity:1;color:#F2B632}
+footer .foot-bottom{line-height:1.8;border-top:1px solid rgba(239,230,214,.2);margin-top:26px;padding-top:16px;font-size:.85rem;opacity:.8;display:block}
 @media (max-width:820px){footer .foot-grid{grid-template-columns:1fr 1fr}footer .foot-grid .foot-col:first-child{grid-column:1/-1}}
 @media (max-width:520px){footer .foot-grid{grid-template-columns:1fr;gap:22px}}
 footer .brand{font-size:1.3rem}
@@ -785,7 +787,7 @@ dialog.cdlg::backdrop{background:rgba(5,15,16,.7)}
       </ul>
     </div>
   </div>
-  <div class="wrap foot-bottom">© <span id="yr"></span> Meth Suites · <span data-t="foot.by">Website by RealLanka.</span></div>
+  <div class="wrap foot-bottom">© <span id="yr"></span> Meth Suites · <span data-t="foot.by">Website by RealLanka</span> · <span data-t="foot.ask">Want a website like this?</span> <a class="dev-link" href="https://wa.me/94701500743?text=Hi%20RealLanka%2C%20I%20saw%20the%20Meth%20Suites%20website%20and%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" style="vertical-align:-2px;margin-right:4px"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>WhatsApp +94 70 150 0743</a></div>
 </footer>
 
 <div class="mbar" aria-label="Quick booking">
@@ -954,7 +956,7 @@ si:{
   "loc.times":"ඇතුළු වීම / පිටවීම (Check-in / Check-out)",
   "loc.timesVal":"ප.ව. 2:00 සිට / දහවල් 12:00 දක්වා",
   "loc.phone":"දුරකථන සහ WhatsApp","loc.email":"විද්‍යුත් තැපෑල (Email)",
-  "foot.tag":"පමුණුගම පිහිටි සුන්දර පවුලේ බුටික් හෝටලය, ශ්‍රී ලංකාව","foot.by":"වෙබ් අඩවිය නිර්මාණය: RealLanka.",
+  "foot.tag":"පමුණුගම පිහිටි සුන්දර පවුලේ බුටික් හෝටලය, ශ්‍රී ලංකාව","foot.by":"වෙබ් අඩවිය නිර්මාණය: RealLanka","foot.ask":"මෙවැනි වෙබ් අඩවියක් ඕනෑද?",
   "float.wa":"WhatsApp හරහා සම්බන්ධ වන්න","bar.wa":"WhatsApp","bar.book":"වෙන්කරවා ගන්න","lb.close":"වසන්න",
   /* dynamic */
   perNight:"/ රාත්‍රියකට",roomOnly:"· කාමරය පමණි", bookRoom:"මෙම කාමරය වෙන්කරවා ගන්න", sleeps:n=>`අමුත්තන් ${n} දෙනෙකුට`,
@@ -1042,7 +1044,7 @@ ta:{
   "book.note":"விலைகள் அமெரிக்க டாலரில் மதிப்பீடுகள். நீங்கள் பணம் செலுத்தும் முன் ஹோட்டல் இறுதி விலையை உறுதிப்படுத்தும்.",
   "loc.h2":"எங்களை எப்படி அடைவது","loc.addr":"முகவரி","loc.addrVal":"507/B/1, பிம்பந்துர, பமுனுகம 11370, இலங்கை","loc.times":"வருகை / புறப்பாடு",
   "loc.timesVal":"செக்-இன்: பிற்பகல் 2:00 மணி முதல் / செக்-அவுட்: நண்பகல் 12:00 மணி வரை","loc.phone":"தொலைபேசி & WhatsApp","loc.email":"மின்னஞ்சல்",
-  "foot.tag":"குடும்பத்திற்குச் சொந்தமான சிறிய ஹோட்டல், பமுனுகம, இலங்கை","foot.by":"இணையதளம்: RealLanka.",
+  "foot.tag":"குடும்பத்திற்குச் சொந்தமான சிறிய ஹோட்டல், பமுனுகம, இலங்கை","foot.by":"இணையதளம்: RealLanka","foot.ask":"இது போன்ற இணையதளம் வேண்டுமா?",
   "float.wa":"WhatsApp செய்யுங்கள்","bar.wa":"WhatsApp","bar.book":"முன்பதிவு செய்யுங்கள்","lb.close":"மூடு",
   perNight:"/ இரவு",roomOnly:"· அறை மட்டும்", bookRoom:"இந்த அறையை முன்பதிவு செய்யுங்கள்", sleeps:n=>`${n} விருந்தினர்கள் தங்கலாம்`,
   nights:n=>`${n} இரவு`,
@@ -1129,7 +1131,7 @@ hi:{
   "book.note":"कीमतें अमेरिकी डॉलर में अनुमानित हैं। भुगतान से पहले होटल अंतिम रेट की पुष्टि करेगा।",
   "loc.h2":"हम तक कैसे पहुँचें","loc.addr":"पता","loc.addrVal":"507/B/1 Bimpandura, Pamunugama 11370, श्रीलंका",
   "loc.times":"चेक-इन / चेक-आउट","loc.timesVal":"चेक-इन: दोपहर 2:00 बजे से / चेक-आउट: दोपहर 12:00 बजे तक","loc.phone":"फ़ोन और WhatsApp","loc.email":"ईमेल",
-  "foot.tag":"पामुनुगामा, श्रीलंका में पारिवारिक बुटीक होटल","foot.by":"वेबसाइट: RealLanka.",
+  "foot.tag":"पामुनुगामा, श्रीलंका में पारिवारिक बुटीक होटल","foot.by":"वेबसाइट: RealLanka","foot.ask":"ऐसी वेबसाइट चाहिए?",
   "float.wa":"WhatsApp करें","bar.wa":"WhatsApp","bar.book":"बुक करें","lb.close":"बंद करें",
   perNight:"/ रात",roomOnly:"· केवल कमरा", bookRoom:"यह कमरा बुक करें", sleeps:n=>`${n} मेहमानों के लिए`,
   nights:n=>`${n} रात`,
@@ -1216,7 +1218,7 @@ ru:{
   "book.note":"Это запрос на бронирование, а не мгновенное бронирование. Номер подтверждается только после ответа отеля. Цены указаны ориентировочно, в долларах США. Ваши данные используются только для ответа на ваш запрос.",
   "loc.h2":"Как нас найти","loc.addr":"Адрес","loc.addrVal":"507/B/1, Bimpandura, Pamunugama 11370, Шри-Ланка",
   "loc.times":"Заезд / выезд","loc.timesVal":"Заезд с 14:00 / выезд до 12:00","loc.phone":"Телефон и WhatsApp","loc.email":"Эл. почта",
-  "foot.tag":"Семейный бутик-отель, Памунугама, Шри-Ланка","foot.by":"Сайт: RealLanka.","foot.blog":"Советы путешественникам (блог)",
+  "foot.tag":"Семейный бутик-отель, Памунугама, Шри-Ланка","foot.by":"Сайт: RealLanka","foot.ask":"Нужен такой же сайт?","foot.blog":"Советы путешественникам (блог)",
   "float.wa":"Написать в WhatsApp","bar.wa":"WhatsApp","bar.book":"Проверить наличие","lb.close":"Закрыть",
   perNight:"/ ночь",roomOnly:"· только номер", bookRoom:"Забронировать этот номер", sleeps:n=>`До ${n} гостей`,
   nights:n=>{const a=n%10,b=n%100;return n+" "+(a===1&&b!==11?"ночь":(a>=2&&a<=4&&(b<12||b>14)?"ночи":"ночей"))},
@@ -1303,7 +1305,7 @@ zh:{
   "book.note":"此为预订请求，非即时确认。酒店回复后，房间才算正式确认。价格为美元估算价。您的信息仅用于回复您的请求。",
   "loc.h2":"如何找到我们","loc.addr":"地址","loc.addrVal":"507/B/1 Bimpandura, Pamunugama 11370, 斯里兰卡",
   "loc.times":"入住 / 退房","loc.timesVal":"14:00 后入住 / 12:00 前退房","loc.phone":"电话和WhatsApp","loc.email":"电子邮件",
-  "foot.tag":"斯里兰卡帕穆努加马的家庭精品酒店","foot.by":"网站制作：RealLanka","foot.blog":"旅行小贴士（博客）",
+  "foot.tag":"斯里兰卡帕穆努加马的家庭精品酒店","foot.by":"网站制作：RealLanka","foot.ask":"想要这样的网站吗？","foot.blog":"旅行小贴士（博客）",
   "float.wa":"微信联系","bar.wa":"微信","bar.book":"预订","lb.close":"关闭",
   perNight:"/ 晚",roomOnly:"· 仅房费", bookRoom:"预订此房", sleeps:n=>`可住${n}人`,
   nights:n=>`${n}晚`,
